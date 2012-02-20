@@ -1,0 +1,30 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head> 
+	<title>{Config::get('project_name', '')} Admin</title>
+	{Asset::css($css)}
+	{Asset::js($js)}
+</head>
+<body>
+	{if Auth::instance('SimpleAuth')->check()}
+		<form action="/admin" method="get">
+			<input type="submit" value="Logout" name="logout" />
+		</form>
+		<br />
+		<div id="admin-tabs">
+			<table border="0" cellspacing="5" cellpadding="5">
+				{foreach $tabs as $key => $val}
+					{if $key == $table}
+						{$key|strtoupper}
+					{else}
+						<a href="/admin/list/{$key}">{$key|strtoupper}</a>
+					{/if}
+					{Html::nbs(3)}
+				{/foreach}
+			</table>
+		</div>
+		<hr />
+	{/if}
+	{$body}
+</body>
+</html>

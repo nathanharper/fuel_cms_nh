@@ -1,0 +1,54 @@
+<p>You made it to the list For {$table|strtoupper}</p>
+
+<div id="list-search">
+	<form action="/admin/list/{$table}" method="POST">
+		<table border="1px solid black" cellspacing="5" cellpadding="5" >
+			{foreach $admin_config as $key => $props}
+				{if !empty($props['search'])}
+					{if !empty($search[$key])}{$search_value = $search[$key]}{else}{$search_value = false}{/if}
+					<tr>
+						<td>{$props['desc']}: </td>
+						<td>{call_user_func_array($props['type']|cat:'::get_search', [$class, $key, $search_value])}</td>
+					</tr>
+				{/if}
+			{/foreach}
+			<tr>
+				<td><input type="submit" value="Search" /></td>
+				<td><input type="button" value="Clear" onclick="window.location = '/admin/list/{$table}';" /></td>
+			</tr>
+		</table>
+	</form>
+</div>
+<hr />
+<div id="item-list">
+	<a href="/admin/item/{$table}?new=1" style="text-decoration:none;"><button>Create New</button></a>
+	<br />
+	{if $msg}
+		<br />
+		<span style="color:red;">{$msg}</span>
+		{Html::br(2)}
+	{/if}
+	<table cellpadding="5" cellspacing="0" class="bordered">
+		<tr>
+			<th>ID</th>
+			{foreach $admin_config as $field_props}
+				{if !empty($field_props['list'])}
+					<th>{$field_props['desc']}</th>
+				{/if}
+			{/foreach}
+			<th></th>
+		</tr>
+		{foreach $models as $model}
+			<tr>
+				<td>{$model->id}</a></td>
+				{foreach $admin_config as $field_name => $field_props}
+					{if !empty($field_props['list'])}
+						<td>{$admin_fields[$model->id][$field_name]->list_view()}</td>
+					{/if}
+				{/foreach}
+				<td><a href="/admin/item/{$table}?id={$model->id}">edit</a></td>
+			</tr>
+		{/foreach}
+	</table>
+</div>
+{Html::br(3)}

@@ -1,0 +1,25 @@
+<p>welcome to item view.</p>
+<a href="/admin/list/{$table}">back to list</a>
+{Html::br(2)}
+<span style="color:green;">{if isset($success)}{$success}{/if}</span>
+
+<form action="/admin/item/{$table}?{if $item->id}id={$item->id}{else}new=1{/if}" method="POST" name="save_item" enctype="multipart/form-data">
+<table border="0" cellspacing="5" cellpadding="5">
+	{foreach $item_config as $field}
+		<tr>
+			<td valign="top">{$field['desc']}: </td>
+			<td>{$field['type']->item_view()}</td>
+		</tr>
+	{/foreach}
+	<tr>
+		<td colspan="2">
+			<input type="submit" value="save" name="save_item" />
+			<input type="button" value="cancel" onclick="window.location = '/admin/list/{$table}';" />
+			{if $item->id}
+				<input type="submit" value="delete" name="delete" onclick="alert('Are you sure you want to delete this record?');"/>
+			{/if}
+		</td>
+	</tr>
+</table>
+</form>
+{Html::br(3)}
