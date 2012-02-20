@@ -1,6 +1,7 @@
 <?php
 return array(
 	// js and css automatically loaded in Master class
+	// HAY LOOK, GIT IS WORKING
 	'admin_js' => array(
 		'jquery' => 'jquery-1.6.2.min.js',
 		'jqcustom' => 'jquery-custom.min.js',
@@ -21,4 +22,5 @@ return array(
 		'audiofiles' => '\\Model_Audiofile',
 		'transactions' => '\\Model_Transaction',
 	),
+	'something_else' => 'hay',
 );
