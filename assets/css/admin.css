@@ -1,0 +1,18 @@
+.bordered td {
+	border:1px solid black;
+}
+
+tr.table-header {
+	background-color:gray;
+}
+
+table.trans-rel-table {
+	
+	border:1px solid black;
+}
+
+table.trans-rel-table tr td,
+table.trans-rel-table tr th {
+	border:1px solid black;
+	padding:5px 10px;
+}
