@@ -6,13 +6,9 @@ require_once(APPPATH . 'config/admin.php');
 
 $admin_config = array(
 	// js and css automatically loaded in Master class
-	'admin_js' => array(
-		'admin' => 'admin.js',
-	),
+	'admin_js' => array(),
 
-	'admin_css' => array(
-		'admin' => 'admin.css',
-	),
+	'admin_css' => array(),
 
 	'admin_tabs' => array(),
 );

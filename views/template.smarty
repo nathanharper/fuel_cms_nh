@@ -3,7 +3,9 @@
 <head> 
 	<title>{Config::get('project_name', '')} Admin</title>
 	{Asset::css($css)}
+	{include file=$admin_css}
 	{Asset::js($js)}
+	{include file=$admin_js}
 </head>
 <body>
 	{if Auth::instance('SimpleAuth')->check()}

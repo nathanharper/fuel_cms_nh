@@ -2,6 +2,8 @@
 
 namespace Admin;
 
+define('ADMINPATH', APPPATH . 'modules/admin/');
+
 abstract class Master extends \Controller_Template {
 	public $template = 'template.smarty';
 	public $data = array();
@@ -38,6 +40,8 @@ abstract class Master extends \Controller_Template {
 			$this->template->body = '';
 			$this->template->css = \Config::get('admin_css');
 			$this->template->js = \Config::get('admin_js');
+			$this->template->admin_js = ADMINPATH . 'assets/js/admin_js.smarty';
+			$this->template->admin_css = ADMINPATH . 'assets/css/admin_css.smarty';
 		}
 		
 		return true;
