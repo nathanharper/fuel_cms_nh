@@ -1,5 +1,6 @@
 <style type="text/css">
-	.bordered td {
+	table.bordered td,
+	table.bordered th {
 		border:1px solid black;
 	}
 
@@ -7,14 +8,55 @@
 		background-color:gray;
 	}
 
+	/* TODO: This is project specific */
 	table.trans-rel-table {
-
 		border:1px solid black;
 	}
-
+ 	
+	/* TODO: This should NOT be in the generic admin css! */
 	table.trans-rel-table tr td,
 	table.trans-rel-table tr th {
 		border:1px solid black;
 		padding:5px 10px;
+	}
+	
+	div#admin-tabs div.tab {
+		float:left;
+		padding:5px 10px;
+		color:#ffffff;
+		background-color:pink;
+		border:1px solid #000000;
+		
+		-moz-border-radius-topleft: 10px;
+		-moz-border-radius-topright: 10px;
+		/*box-shadow: 0 0 0 2px #333;
+		-moz-box-shadow: 0 0 0 2px #333;
+		-webkit-box-shadow: 0 0 0 2px #333;*/
+		border-top-left-radius: 10px;
+		border-top-right-radius: 10px;
+	}
+	
+	div#admin-tabs div.tab.active {
+		background-color:gray;
+		color:#000000;
+	}
+	
+	div#admin-tabs div.tab a {
+		float:left;
+		padding:5px 10px;
+		text-decoration:none;
+	}
+	
+	div#admin-tabs div.tab a:visited {
+		color:#000000;
+	}
+	
+	div#admin-tabs div.tab.active a:visited {
+		color:#ffffff;
+	}
+	
+	.clearfix {
+		margin:10px 0px;
+		clear:both;
 	}
 </style>

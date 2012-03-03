@@ -14,18 +14,13 @@
 		</form>
 		<br />
 		<div id="admin-tabs">
-			<table border="0" cellspacing="5" cellpadding="5">
-				{foreach $tabs as $key => $val}
-					{if $key == $table}
-						{$key|strtoupper}
-					{else}
-						<a href="/admin/list/{$key}">{$key|strtoupper}</a>
-					{/if}
-					{Html::nbs(3)}
-				{/foreach}
-			</table>
+			{foreach $tabs as $key => $val}
+				<div class="tab{if $key eq $table} active{/if}">
+					<a href="/admin/list/{$key}"><b>{Inflector::camelize($key)}</b></a>
+				</div>
+			{/foreach}
 		</div>
-		<hr />
+		<hr class="clearfix" />
 	{/if}
 	{$body}
 </body>

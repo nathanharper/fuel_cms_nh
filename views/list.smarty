@@ -1,5 +1,3 @@
-<p>You made it to the list For {$table|strtoupper}</p>
-
 <div id="list-search">
 	<form action="/admin/list/{$table}" method="POST">
 		<table border="1px solid black" cellspacing="5" cellpadding="5" >
@@ -21,15 +19,17 @@
 </div>
 <hr />
 <div id="item-list">
-	<a href="/admin/item/{$table}?new=1" style="text-decoration:none;"><button>Create New</button></a>
+	<a href="/admin/item/{$table}?new=1" style="text-decoration:none;">
+		<button>Create New {Inflector::camelize(Inflector::singularize($table))}</button>
+	</a>
 	<br />
 	{if $msg}
 		<br />
 		<span style="color:red;">{$msg}</span>
-		{Html::br(2)}
 	{/if}
+	<br />
 	<table cellpadding="5" cellspacing="0" class="bordered">
-		<tr>
+		<tr class="table-header">
 			<th>ID</th>
 			{foreach $admin_config as $field_props}
 				{if !empty($field_props['list'])}
