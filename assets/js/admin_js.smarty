@@ -1,0 +1,8 @@
+<script type="text/javascript" charset="utf-8">
+	var Admin = new function() {
+		$.fn.ready(function() {
+			$('.datepicker').datepicker();
+		});
+		return this;
+	}();
+</script>
