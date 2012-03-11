@@ -9,10 +9,21 @@ class Field_String extends Adminfield {
 	
 	public function item_view() {
 		$class = str_replace('\\','',$this->class);
+		$fieldname = "item_field[$class][".($this->item->id?$this->item->id:'new')."][$this->field]";
+		$value = ($this->item->{$this->field} ? $this->item->{$this->field} : '');
+		
+		if($this->def('textarea')) {
+			return html_tag('textarea', array(
+				'name' => $fieldname, 
+				'rows' => $this->def('rows', 20), 
+				'cols' => $this->def('cols', 50)), 
+			$value);
+		}
+		
 		return html_tag('input', array(
-			'name' => "item_field[$class][".($this->item->id?$this->item->id:'new')."][$this->field]",
+			'name' => $fieldname,
 			'type' => 'text',
-			'value' => ($this->item->{$this->field} ? $this->item->{$this->field} : ''),
+			'value' => $value,
 		));
 	}
 	
