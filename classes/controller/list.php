@@ -44,6 +44,6 @@ class Controller_List extends Master {
 		$this->data['models'] = $models;
 		$this->data['class'] = $class;
 		$this->data['admin_config'] = $admin_config;
-		$this->template->body = 'list.smarty';
+		$this->template->body = 'list.php';
 	}
 }

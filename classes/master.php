@@ -5,7 +5,7 @@ namespace Admin;
 define('ADMINPATH', APPPATH . 'modules/admin/');
 
 abstract class Master extends \Controller_Template {
-	public $template = 'template.smarty';
+	public $template = 'template.php';
 	public $data = array();
 	
 	public function before() {
@@ -56,7 +56,7 @@ abstract class Master extends \Controller_Template {
 	
 	public function return_404() {
 		$this->response->status = 404;
-		$this->template = \View::factory('404_template.smarty');
-		$this->template->body = '404.smarty';
+		$this->template = \View::factory('404_template.php');
+		$this->template->body = '404.php';
 	}
 }

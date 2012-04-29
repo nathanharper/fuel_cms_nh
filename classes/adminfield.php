@@ -17,7 +17,7 @@ abstract class Adminfield {
 	}
 	
 	public static function factory($class, &$item = null, $field = null) {
-		return new static($class);
+		return new static($class, $item, $field);
 	}
 	
 	public abstract function list_view();

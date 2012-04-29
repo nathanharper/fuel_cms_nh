@@ -19,6 +19,6 @@ class Controller_Login extends Master {
 	}
 	
 	public function action_index() {
-		$this->template->body = 'login.smarty';
+		$this->template->body = 'login.php';
 	}
 }

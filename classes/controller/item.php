@@ -38,7 +38,7 @@ class Controller_Item extends Master {
 		foreach($this->data['item_config'] as $field => $field_data) {
 			//TODO: get the factory working properly so we can chain this muh-fuh
 			$field_type = $field_data['type'];
-			$new_field = new $field_type($class, $item, $field);
+			$new_field = $field_type::factory($class, $item, $field);
 			$this->data['item_config'][$field]['type'] = $new_field;
 			if($save_item) {
 				$new_field->update_item($post_data);
@@ -62,6 +62,6 @@ class Controller_Item extends Master {
 		}
 		
 		$this->data['item'] = $item;
-		$this->template->body = 'item.smarty';
+		$this->template->body = 'item.php';
 	}
 }
