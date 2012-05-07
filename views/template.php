@@ -3,10 +3,9 @@
 <head> 
 	<title><?php echo Config::get('project_name', ''); ?> Admin</title>
 	<?php 
-		echo Asset::css($css);
-		include($admin_css);
-		echo Asset::js($js);
-		include($admin_js); 
+		Asset::add_path(ADMINPATH . 'assets/');
+		echo Asset::css(Config::get('admin.css'), array(), NULL, TRUE);
+		echo Asset::js(Config::get('admin.js'), array(), NULL, TRUE); 
 	?>
 </head>
 <body>

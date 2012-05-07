@@ -10,7 +10,6 @@ abstract class Master extends \Controller_Template {
 	
 	public function before() {
 		parent::before();
-		\Config::load('admin::admin');
 		
 		$auth = \Auth::instance('SimpleAuth');
 		if(\Input::get('logout')) {
@@ -24,10 +23,10 @@ abstract class Master extends \Controller_Template {
 				\Response::redirect(\Uri::base(false).'admin/list');
 			}
 			// Load admin Config for List View and default to first tab
-			$this->data['tabs'] = $this->template->tabs = \Config::get('admin_tabs');
+			$this->data['tabs'] = $this->template->tabs = \Config::get('admin.tabs');
 			$this->data['table'] = $this->param('item', ''); // get item from URI
 			if(!$this->data['table']) {
-				list($this->data['table']) = array_slice(array_keys($this->data['tabs']),0,1);
+				list($this->data['table']) = array_slice(array_keys($this->data['tabs']), 0, 1);
 			}
 			$this->template->table = $this->data['table'];
 		}
@@ -38,10 +37,6 @@ abstract class Master extends \Controller_Template {
 		if($this->auto_render === true) {
 			// set up defaults
 			$this->template->body = '';
-			$this->template->css = \Config::get('admin_css');
-			$this->template->js = \Config::get('admin_js');
-			$this->template->admin_js = ADMINPATH . 'assets/js/admin_js.smarty';
-			$this->template->admin_css = ADMINPATH . 'assets/css/admin_css.smarty';
 		}
 		
 		return true;
